@@ -398,6 +398,13 @@ function App() {
     capo: 4,
     link: "https://tabs.ultimate-guitar.com/tab/ghost/mary-on-a-cross-chords-2825666",
   },
+  {
+  name: "Best friend",
+  difficulty: 2,
+  chords: "F G# Am",
+  capo: 2,
+  link: "https://tabs.ultimate-guitar.com/tab/rex-orange-county/best-friend-chords-1954795",
+}
     
   ]
 
