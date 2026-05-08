@@ -46,23 +46,35 @@ function App() {
 
       {/* GRID */}
       <div style={styles.grid}>
-        {filteredSongs.map((song, i) => (
-          <div key={i} style={styles.card}>
-            <h2 style={styles.songName}>{song.name}</h2>
+      {filteredSongs.map((song, i) => (
+  <div key={i} style={styles.card}>
+    <h2 style={styles.songName}>{song.name}</h2>
 
-            <p style={styles.text}>
-              🔥 Difficulty: <b>{song.difficulty}/3</b>
-            </p>
+    <p style={styles.text}>
+      🔥 Difficulty: <b>{song.difficulty}/3</b>
+    </p>
 
-            <p style={styles.text}>🎸 Chords: {song.chords}</p>
+    <p style={styles.text}>🎸 Chords: {song.chords}</p>
+    <p style={styles.text}>🎹 Capo: {song.capo}</p>
 
-            <p style={styles.text}>🎹 Capo: {song.capo}</p>
+    <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
+      
+      {/* TVOJE EXISTUJÍCÍ PLAY TLAČÍTKO */}
+      <a href={song.link} target="_blank" rel="noreferrer">
+        <button style={styles.button}>Play ▶</button>
+      </a>
 
-            <a href={song.link} target="_blank" rel="noreferrer">
-              <button style={styles.button}>Play ▶</button>
-            </a>
-          </div>
-        ))}
+      {/* NOVÉ YOUTUBE TLAČÍTKO */}
+      <a
+        href={`https://www.youtube.com/results?search_query=${encodeURIComponent(song.name)}`}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <button style={styles.youtubeButton}>YouTube ▶</button>
+      </a>
+    </div>
+  </div>
+    ))}
       </div>
     </div>
   )
