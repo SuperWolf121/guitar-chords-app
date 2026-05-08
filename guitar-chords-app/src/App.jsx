@@ -2,6 +2,7 @@ import { useState } from "react"
 
 function App() {
   const [search, setSearch] = useState("")
+  const [noCapo, setNoCapo] = useState(false)
 
   const songs = [
     {
@@ -27,13 +28,18 @@ function App() {
     },
   ]
 
-  const filteredSongs = songs.filter((song) =>
-    song.name.toLowerCase().includes(search.toLowerCase())
-  )
+  const filteredSongs = songs.filter((song) => {
+    const matchesSearch = song.name
+      .toLowerCase()
+      .includes(search.toLowerCase())
+
+    const matchesCapo = noCapo ? song.capo === 0 : true
+
+    return matchesSearch && matchesCapo
+  })
 
   return (
     <div style={styles.page}>
-      {/* HEADER */}
       <h1 style={styles.title}>🎸 My Guitar Library</h1>
 
       {/* SEARCH */}
@@ -44,37 +50,47 @@ function App() {
         style={styles.search}
       />
 
+      {/* NO CAPO BUTTON */}
+      <button
+        onClick={() => setNoCapo(!noCapo)}
+        style={{
+          ...styles.noCapoButton,
+          background: noCapo ? "#1db954" : "#333",
+        }}
+      >
+        🎹 No capo
+      </button>
+
       {/* GRID */}
       <div style={styles.grid}>
-      {filteredSongs.map((song, i) => (
-  <div key={i} style={styles.card}>
-    <h2 style={styles.songName}>{song.name}</h2>
+        {filteredSongs.map((song, i) => (
+          <div key={i} style={styles.card}>
+            <h2 style={styles.songName}>{song.name}</h2>
 
-    <p style={styles.text}>
-      🔥 Difficulty: <b>{song.difficulty}/3</b>
-    </p>
+            <p style={styles.text}>
+              🔥 Difficulty: <b>{song.difficulty}/3</b>
+            </p>
 
-    <p style={styles.text}>🎸 Chords: {song.chords}</p>
-    <p style={styles.text}>🎹 Capo: {song.capo}</p>
+            <p style={styles.text}>🎸 Chords: {song.chords}</p>
+            <p style={styles.text}>🎹 Capo: {song.capo}</p>
 
-    <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
-      
-      {/* TVOJE EXISTUJÍCÍ PLAY TLAČÍTKO */}
-      <a href={song.link} target="_blank" rel="noreferrer">
-        <button style={styles.button}>Play ▶</button>
-      </a>
+            <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
+              <a href={song.link} target="_blank" rel="noreferrer">
+                <button style={styles.button}>Play ▶</button>
+              </a>
 
-      {/* NOVÉ YOUTUBE TLAČÍTKO */}
-      <a
-        href={`https://www.youtube.com/results?search_query=${encodeURIComponent(song.name)}`}
-        target="_blank"
-        rel="noreferrer"
-      >
-        <button style={styles.youtubeButton}>YouTube ▶</button>
-      </a>
-    </div>
-  </div>
-    ))}
+              <a
+                href={`https://www.youtube.com/results?search_query=${encodeURIComponent(
+                  song.name
+                )}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <button style={styles.youtubeButton}>YouTube ▶</button>
+              </a>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   )
@@ -100,10 +116,21 @@ const styles = {
     borderRadius: 10,
     border: "none",
     outline: "none",
-    marginBottom: 20,
+    marginBottom: 10,
     background: "#1f1f1f",
     color: "white",
     fontSize: 16,
+  },
+
+  noCapoButton: {
+    width: "100%",
+    padding: 10,
+    marginBottom: 20,
+    borderRadius: 8,
+    border: "none",
+    color: "white",
+    fontWeight: "bold",
+    cursor: "pointer",
   },
 
   grid: {
@@ -117,7 +144,6 @@ const styles = {
     padding: 15,
     borderRadius: 15,
     border: "1px solid #2a2a2a",
-    transition: "0.2s",
     cursor: "pointer",
   },
 
@@ -143,16 +169,15 @@ const styles = {
   },
 
   youtubeButton: {
-  marginTop: 10,
-  padding: 10,
-  borderRadius: 8,
-  border: "none",
-  background: "#ff0000",
-  color: "white",
-  fontWeight: "bold",
-  cursor: "pointer",
-},
-
+    marginTop: 10,
+    padding: 10,
+    borderRadius: 8,
+    border: "none",
+    background: "#ff0000",
+    color: "white",
+    fontWeight: "bold",
+    cursor: "pointer",
+  },
 }
 
 export default App
