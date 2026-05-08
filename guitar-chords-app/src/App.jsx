@@ -404,7 +404,7 @@ function App() {
   chords: "F G# Am",
   capo: 2,
   link: "https://tabs.ultimate-guitar.com/tab/rex-orange-county/best-friend-chords-1954795",
-}
+},
     
   ]
 
