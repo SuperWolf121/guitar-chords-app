@@ -1,4 +1,8 @@
+import { useState } from "react"
+
 function App() {
+  const [search, setSearch] = useState("")
+
   const songs = [
     {
       name: "Wonderwall",
@@ -23,11 +27,39 @@ function App() {
     },
   ]
 
+  const filteredSongs = songs.filter((song) =>
+    song.name.toLowerCase().includes(search.toLowerCase())
+  )
+
   return (
-    <div style={{ padding: "20px", background: "#111", minHeight: "100vh", color: "white" }}>
+    <div
+      style={{
+        padding: "20px",
+        background: "#111",
+        minHeight: "100vh",
+        color: "white",
+      }}
+    >
       <h1>🎸 Moje akordy</h1>
 
-      {songs.map((song, index) => (
+      {/* SEARCH INPUT */}
+      <input
+        type="text"
+        placeholder="Hledej písničku..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        style={{
+          width: "100%",
+          padding: "10px",
+          marginTop: "10px",
+          marginBottom: "20px",
+          borderRadius: "8px",
+          border: "none",
+        }}
+      />
+
+      {/* SONG LIST */}
+      {filteredSongs.map((song, index) => (
         <div
           key={index}
           style={{
@@ -43,7 +75,7 @@ function App() {
           <p>Akordy: {song.chords}</p>
           <p>Kapo: {song.capo}</p>
 
-          <a href={song.link} target="_blank">
+          <a href={song.link} target="_blank" rel="noreferrer">
             <button>Hrát</button>
           </a>
         </div>
