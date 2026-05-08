@@ -3,7 +3,8 @@ import { useState } from "react"
 function App() {
   const [search, setSearch] = useState("")
   const [noCapo, setNoCapo] = useState(false)
-
+  const [openedSong, setOpenedSong] = useState(null)
+  
   const songs = [
   {
     name: "Wonderwall",
@@ -435,40 +436,83 @@ function App() {
 
       {/* GRID */}
       <div style={styles.grid}>
-        {filteredSongs.map((song, i) => (
-          <div key={i} style={styles.card}>
-            <h2 style={styles.songName}>{song.name}</h2>
+       {filteredSongs.map((song, i) => (
+  <div key={i} style={styles.card}>
+    
+    {/* HEADER */}
+    <div
+      onClick={() =>
+        setOpenedSong(openedSong === i ? null : i)
+      }
+      style={styles.songHeader}
+    >
+      <h2 style={styles.songName}>
+        🎸 {song.name}
+      </h2>
 
-            <p style={styles.text}>
-              🔥 Difficulty: <b>{song.difficulty}/3</b>
-            </p>
+      <span>
+        {openedSong === i ? "▲" : "▼"}
+      </span>
+    </div>
 
-            <p style={styles.text}>🎸 Chords: {song.chords}</p>
-            <p style={styles.text}>🎹 Capo: {song.capo}</p>
+    {/* EXPANDED */}
+    {openedSong === i && (
+      <>
+        <p style={styles.text}>
+          🔥 Difficulty: <b>{song.difficulty}/3</b>
+        </p>
 
-            <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
-              <a href={song.link} target="_blank" rel="noreferrer">
-                <button style={styles.button}>Play ▶</button>
-              </a>
+        <p style={styles.text}>
+          🎸 Chords: {song.chords}
+        </p>
 
-              <a
-                href={`https://www.youtube.com/results?search_query=${encodeURIComponent(
-                  song.name
-                )}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <button style={styles.youtubeButton}>YouTube ▶</button>
-              </a>
-            </div>
-          </div>
-        ))}
+        <p style={styles.text}>
+          🎹 Capo: {song.capo}
+        </p>
+
+        <div
+          style={{
+            display: "flex",
+            gap: 10,
+            marginTop: 10,
+          }}
+        >
+          <a
+            href={song.link}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <button style={styles.button}>
+              Play ▶
+            </button>
+          </a>
+
+          <a
+            href={`https://www.youtube.com/results?search_query=${encodeURIComponent(song.name)}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <button style={styles.youtubeButton}>
+              YouTube ▶
+            </button>
+          </a>
+        </div>
+      </>
+    )}
+  </div>
+))}
       </div>
     </div>
   )
 }
 
 const styles = {
+  songHeader: {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  cursor: "pointer",
+},
   page: {
     minHeight: "100vh",
     background: "linear-gradient(180deg, #0f0f0f, #121212)",
