@@ -419,6 +419,13 @@ function App() {
   capo: 0,
   link: "https://pisnicky-akordy.cz/mandrage/srouby-a-matice?format=pdf",
 },
+  {
+  name: "Let her go",
+  difficulty: 2,
+  chords: "F C G Am",
+  capo: 7,
+  link: "https://pisnicky-akordy.cz/mandrage/srouby-a-matice?format=pdf",
+},
     
   ]
 
