@@ -412,6 +412,13 @@ function App() {
   capo: 2,
   link: "https://tabs.ultimate-guitar.com/tab/4-non-blondes/whats-up-chords-349210",
 },
+  {
+  name: "Šrouby a matice up",
+  difficulty: 2,
+  chords: "A D E Hm",
+  capo: 0,
+  link: "https://pisnicky-akordy.cz/mandrage/srouby-a-matice?format=pdf",
+},
     
   ]
 
