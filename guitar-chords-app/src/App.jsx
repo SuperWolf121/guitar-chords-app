@@ -412,13 +412,6 @@ function App() {
   capo: 2,
   link: "https://tabs.ultimate-guitar.com/tab/4-non-blondes/whats-up-chords-349210",
 },
-  {
-  name: "Whats up",
-  difficulty: 1,
-  chords: "G C Am",
-  capo: 2,
-  link: "https://tabs.ultimate-guitar.com/tab/4-non-blondes/whats-up-chords-349210",
-},
     
   ]
 
