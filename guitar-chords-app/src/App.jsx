@@ -441,7 +441,7 @@ function App() {
 
   return (
     <div style={styles.page}>
-      <h1 style={styles.title}>🎸 My Guitar Library</h1>
+      <h1 style={styles.title}>🎸 Čus Lukáši</h1>
 
       {/* SEARCH */}
       <input
