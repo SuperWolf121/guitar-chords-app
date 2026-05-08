@@ -413,7 +413,7 @@ function App() {
   link: "https://tabs.ultimate-guitar.com/tab/4-non-blondes/whats-up-chords-349210",
 },
   {
-  name: "Šrouby a matice up",
+  name: "Šrouby a matice",
   difficulty: 2,
   chords: "A D E Hm",
   capo: 0,
