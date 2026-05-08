@@ -382,7 +382,7 @@ function App() {
     difficulty: 2,
     chords: "F G C Am",
     capo: 0,
-    link: "https://tabs.ultimate-guitar.com/tab/stephen-speaks/out-of-my-league-chords-196771",
+    link: "https://tabs.ultimate-guitar.com/tab/fitz-and-the-tantrums/out-of-my-league-chords-1401040",
   },
   {
     name: "Lovefool",
