@@ -40,7 +40,7 @@ function App() {
         color: "white",
       }}
     >
-      <h1>🎸 Moje akordy</h1>
+      <h1>🎸 Vítej na mé strance s akordama :D</h1>
 
       {/* SEARCH INPUT */}
       <input
