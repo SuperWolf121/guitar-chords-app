@@ -64,18 +64,13 @@ function App() {
   })
 
   return (
-    <div style={{
-      minHeight: "100vh",
-      background: "#121212",
-      color: "white",
-      fontFamily: "Arial",
-      padding: 20,
-    }}>
+    <div style={{ minHeight: "100vh", background: "#121212", color: "white", padding: 20 }}>
 
-      {/* TOP */}
+      {/* HEADER */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <h1>🎸 Akordíky</h1>
 
+        {/* theme */}
         <div style={{ display: "flex", gap: 8 }}>
           {["#1db954", "#ff4d4d", "#4da6ff", "#ffcc00", "#b84dff"].map((c) => (
             <div
@@ -96,9 +91,9 @@ function App() {
 
       {/* SEARCH */}
       <input
-        placeholder="Search..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search..."
         style={{
           width: "100%",
           padding: 12,
@@ -120,6 +115,7 @@ function App() {
             border: "none",
             background: noCapo ? themeColor : "#2a2a2a",
             color: "white",
+            cursor: "pointer",
           }}
         >
           No capo
@@ -133,13 +129,14 @@ function App() {
             border: "none",
             background: showNewOnly ? themeColor : "#2a2a2a",
             color: "white",
+            cursor: "pointer",
           }}
         >
           NEW
         </button>
       </div>
 
-      {/* GRID */}
+      {/* SONGS */}
       <div style={{
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
@@ -149,40 +146,63 @@ function App() {
         {filteredSongs.map((song, i) => (
           <div
             key={i}
-            onClick={() => setOpenedSong(openedSong === i ? null : i)}
             style={{
               background: "#181818",
               padding: 15,
               borderRadius: 12,
               border: "1px solid #2a2a2a",
-              cursor: "pointer",
             }}
           >
             <h3 style={{ margin: 0 }}>{song.name}</h3>
-            <div style={{ color: themeColor, fontWeight: "bold" }}>
-              {song.chords}
-            </div>
+            <div style={{ color: themeColor, fontWeight: "bold" }}>{song.chords}</div>
 
+            {/* OPEN */}
+            <button
+              onClick={() =>
+                setOpenedSong(openedSong === i ? null : i)
+              }
+              style={{
+                marginTop: 10,
+                width: "100%",
+                padding: 10,
+                borderRadius: 10,
+                border: "none",
+                background: themeColor,
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+            >
+              Open ▶
+            </button>
+
+            {/* YOUTUBE BUTTON */}
+            <a
+              href={`https://www.youtube.com/results?search_query=${encodeURIComponent(song.name)}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <button
+                style={{
+                  marginTop: 8,
+                  width: "100%",
+                  padding: 10,
+                  borderRadius: 10,
+                  border: "none",
+                  background: "#ff0000",
+                  color: "white",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}
+              >
+                YouTube ▶
+              </button>
+            </a>
+
+            {/* EXPANDED */}
             {openedSong === i && (
               <div style={{ marginTop: 10 }}>
                 <div>🔥 Difficulty: {song.difficulty}/3</div>
                 <div>🎹 Capo: {song.capo}</div>
-
-                <a href={song.link} target="_blank" rel="noreferrer">
-                  <button
-                    style={{
-                      marginTop: 10,
-                      width: "100%",
-                      padding: 10,
-                      borderRadius: 10,
-                      border: "none",
-                      background: themeColor,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Open ▶
-                  </button>
-                </a>
               </div>
             )}
           </div>
