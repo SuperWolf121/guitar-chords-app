@@ -34,8 +34,11 @@ function App() {
 
   const filteredSongs = songs.filter((song) => {
     const matchesSearch = song.name.toLowerCase().includes(search.toLowerCase())
+
     const matchesCapo = !noCapo || song.capo === 0
-    const matchesNew = !showNewOnly || song.isNew === true
+
+    // 🔥 FIX: správný NEW filtr
+    const matchesNew = !showNewOnly ? true : song.isNew === true
 
     return matchesSearch && matchesCapo && matchesNew
   })
@@ -64,16 +67,16 @@ function App() {
     themePicker: {
       display: "flex",
       gap: 8,
-      alignItems: "center",
     },
 
-    colorDot: {
-      width: 20,
-      height: 20,
+    dot: (c) => ({
+      width: 18,
+      height: 18,
       borderRadius: "50%",
+      background: c,
       cursor: "pointer",
-      border: "2px solid white",
-    },
+      border: themeColor === c ? "2px solid white" : "2px solid transparent",
+    }),
 
     search: {
       width: "100%",
@@ -112,14 +115,10 @@ function App() {
       padding: 15,
       borderRadius: 16,
       cursor: "pointer",
-      transition: "0.2s",
       border: "1px solid #2a2a2a",
     },
 
-    songName: {
-      margin: 0,
-      fontSize: 18,
-    },
+    name: { margin: 0 },
 
     chords: {
       color: themeColor,
@@ -129,26 +128,24 @@ function App() {
 
     expanded: {
       marginTop: 10,
-      paddingTop: 10,
       borderTop: "1px solid #333",
+      paddingTop: 10,
     },
 
     info: {
       display: "flex",
       justifyContent: "space-between",
-      marginBottom: 6,
       color: "#ccc",
+      marginBottom: 5,
     },
 
-    openBtn: {
+    btn: {
       marginTop: 10,
       width: "100%",
       padding: 10,
       borderRadius: 10,
       border: "none",
-      cursor: "pointer",
       background: themeColor,
-      color: "black",
       fontWeight: "bold",
     },
   }
@@ -156,21 +153,13 @@ function App() {
   return (
     <div style={styles.page}>
 
-      {/* TOP BAR */}
+      {/* TOP */}
       <div style={styles.topBar}>
         <div style={styles.title}>🎸 Akordíky</div>
 
         <div style={styles.themePicker}>
           {["#1db954", "#ff4d4d", "#4da6ff", "#ffcc00", "#b84dff"].map((c) => (
-            <div
-              key={c}
-              onClick={() => setThemeColor(c)}
-              style={{
-                ...styles.colorDot,
-                background: c,
-                transform: themeColor === c ? "scale(1.2)" : "scale(1)",
-              }}
-            />
+            <div key={c} style={styles.dot(c)} onClick={() => setThemeColor(c)} />
           ))}
         </div>
       </div>
@@ -178,24 +167,18 @@ function App() {
       {/* SEARCH */}
       <input
         style={styles.search}
-        placeholder="Search songs..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search..."
       />
 
       {/* FILTERS */}
       <div style={styles.filters}>
-        <button
-          style={styles.button(noCapo)}
-          onClick={() => setNoCapo(!noCapo)}
-        >
+        <button style={styles.button(noCapo)} onClick={() => setNoCapo(!noCapo)}>
           No capo
         </button>
 
-        <button
-          style={styles.button(showNewOnly)}
-          onClick={() => setShowNewOnly(!showNewOnly)}
-        >
+        <button style={styles.button(showNewOnly)} onClick={() => setShowNewOnly(!showNewOnly)}>
           NEW
         </button>
       </div>
@@ -204,7 +187,7 @@ function App() {
       <div style={styles.grid}>
         {filteredSongs.map((song, i) => (
           <div key={i} style={styles.card} onClick={() => setOpenedSong(openedSong === i ? null : i)}>
-            <h3 style={styles.songName}>{song.name}</h3>
+            <h3 style={styles.name}>{song.name}</h3>
             <div style={styles.chords}>{song.chords}</div>
 
             {openedSong === i && (
@@ -220,7 +203,7 @@ function App() {
                 </div>
 
                 <a href={song.link} target="_blank" rel="noreferrer">
-                  <button style={styles.openBtn}>Open song ▶</button>
+                  <button style={styles.btn}>Open ▶</button>
                 </a>
               </div>
             )}
