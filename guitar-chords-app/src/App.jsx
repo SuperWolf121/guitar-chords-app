@@ -57,123 +57,11 @@ function App() {
       link: "https://guitartuna.com/chords/stand-by-me-ben-e-king-easy-guitar-chords-60fa8757d87f149fe408c47e",
     },
     {
-      name: "V blbým věku",
-      difficulty: 2,
-      chords: "C G F Am",
-      capo: 0,
-      link: "https://www.supermusic.cz/piesen.php?idpiesne=781955",
-    },
-    {
-      name: "Pro Emu",
-      difficulty: 2,
-      chords: "C G F Dm Am",
-      capo: 0,
-      link: "https://akordy.kytary.cz/song/pro-emu",
-    },
-    {
-      name: "Cudzinka v tvojej zemi",
-      difficulty: 2,
-      chords: "C G F Dm Am",
-      capo: 0,
-      link: "https://akordy.kytary.cz/song/cudzinka-v-tvojej-zemi",
-    },
-    {
-      name: "Hledá se žena",
-      difficulty: 2,
-      chords: "Am G F E",
-      capo: 0,
-      link: "https://pisnicky-akordy.cz/mandrage/hleda-se-zena?format=pdf",
-    },
-    {
-      name: "Sofia (kapo)",
-      difficulty: 2,
-      chords: "Am C G F Dm",
-      capo: 2,
-      link: "https://tabs.ultimate-guitar.com/tab/alvaro-soler/sofia-chords-1836944",
-    },
-    {
-      name: "Sofia (bez kapa)",
-      difficulty: 2,
-      chords: "Bm D A G F#m",
-      capo: 0,
-      link: "https://tabs.ultimate-guitar.com/tab/alvaro-soler/sofia-chords-1836944",
-    },
-    {
-      name: "Čekám na signál",
-      difficulty: 3,
-      chords: "F# G#m C#m H",
-      capo: 0,
-      link: "https://akordy.kytary.cz/song/cekam-na-signal",
-    },
-    {
-      name: "Na ostří nože",
-      difficulty: 1,
-      chords: "Em D C Am",
-      capo: 0,
-      link: "https://akordy.kytary.cz/song/na-ostri-noze",
-    },
-    {
-      name: "Matfyzák na discu",
-      difficulty: 2,
-      chords: "F Am G Dm E H7",
-      capo: 3,
-      link: "https://kytaristka.cz/zpevnik/pokac/matfyzak-na-discu",
-    },
-    {
-      name: "Amazonka",
-      difficulty: 2,
-      chords: "G Bm Hm Am D",
-      capo: 0,
-      link: "https://zpevniky.com/zpevnik.php?zpevnik=190&pisnicka=82",
-    },
-    {
-      name: "Prodavač",
-      difficulty: 2,
-      chords: "C F G D7",
-      capo: 0,
-      link: "https://kytaristka.cz/zpevnik/fesaci/prodavac",
-    },
-    {
-      name: "Lásko",
-      difficulty: 1,
-      chords: "Am E7 G C",
-      capo: 0,
-      link: "https://pisnicky-akordy.cz/karel-kryl/lasko?format=pdf",
-    },
-    {
-      name: "Podvod",
-      difficulty: 1,
-      chords: "Em G H7 C",
-      capo: 0,
-      link: "https://kytaristka.cz/zpevnik/nedvedi/podvod",
-    },
-    {
-      name: "Být stále mlád",
-      difficulty: 1,
-      chords: "G D Em C Am",
-      capo: 0,
-      link: "https://pisnicky-akordy.cz/karel-gott/byt-stale-mlad?format=pdf",
-    },
-    {
       name: "Holubí dům",
       difficulty: 2,
       chords: "Em D C Hm",
       capo: 0,
       link: "https://akordy.kytary.cz/song/holubi-dum",
-    },
-    {
-      name: "Viva la Vida",
-      difficulty: 1,
-      chords: "C Em G D",
-      capo: 1,
-      link: "https://www.songsterr.com/a/wsa/coldplay-viva-la-vida-chords-s10136",
-    },
-    {
-      name: "Yellow",
-      difficulty: 2,
-      chords: "G D Cmaj7",
-      capo: 4,
-      link: "https://tabs.ultimate-guitar.com/tab/coldplay/yellow-chords-114080",
     },
     {
       name: "Lovefool",
@@ -272,62 +160,6 @@ function App() {
       link: "https://tabs.ultimate-guitar.com/tab/counting-crows/accidentally-in-love-chords-128241",
       isNew: true,
     },
-    {
-      name: "Dont look back in anger",
-      difficulty: 2,
-      chords: "F Gm G",
-      capo: 0,
-      link: "https://tabs.ultimate-guitar.com/tab/oasis/dont-look-back-in-anger-chords-6097",
-      isNew: true,
-    },
-    {
-      name: "Kopce u pramenu reky tyne",
-      difficulty: 2,
-      chords: "B F C",
-      capo: 0,
-      link: "https://pisnicky-akordy.cz/asonance/kopce-u-pramenu-reky-tyne",
-      isNew: true,
-    },
-    {
-      name: "Dej mi víc své lásky",
-      difficulty: 1,
-      chords: "Am G C",
-      capo: 0,
-      link: "https://pisnicky-akordy.cz/olympic/dej-mi-vic-sve-lasky",
-      isNew: true,
-    },
-    {
-      name: "Anděl",
-      difficulty: 1,
-      chords: "Am C G7",
-      capo: 0,
-      link: "https://kytaristka.cz/zpevnik/karel-kryl/andel",
-      isNew: true,
-    },
-    {
-      name: "Kometa",
-      difficulty: 2,
-      chords: "Am Dm G7",
-      capo: 0,
-      link: "https://pisnicky-akordy.cz/jarek-nohavica/kometa",
-      isNew: true,
-    },
-    {
-      name: "Milenci v texaskach",
-      difficulty: 2,
-      chords: "F G Am",
-      capo: 0,
-      link: "https://pisnicky-akordy.cz/taborove-pisne/milenci-v-texaskach",
-      isNew: true,
-    },
-    {
-      name: "Řekni kde ty kytky jsou",
-      difficulty: 2,
-      chords: "A F#m D E",
-      capo: 0,
-      link: "https://kytaristka.cz/zpevnik/marie-rottrova/rekni-kde-ty-kytky-jsou",
-      isNew: true,
-    },
   ]
 
   const filteredSongs = songs.filter((song) => {
@@ -343,94 +175,108 @@ function App() {
 
   return (
     <div style={styles.page}>
-      <h1 style={styles.title}>🎸 Akordiky</h1>
+      <div style={styles.container}>
+        <h1 style={styles.title}>🎸 Akordíky</h1>
 
-      <input
-        placeholder="Search songs..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        style={styles.search}
-      />
+        <input
+          placeholder="Search songs..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          style={styles.search}
+        />
 
-      <div style={styles.topButtons}>
-        <button
-          onClick={() => setNoCapo(!noCapo)}
-          style={{
-            ...styles.filterButton,
-            background: noCapo ? "#1db954" : "#333",
-          }}
-        >
-          🎹 No capo
-        </button>
+        <div style={styles.filters}>
+          <button
+            onClick={() => setNoCapo(!noCapo)}
+            style={{
+              ...styles.filterButton,
+              background: noCapo ? "#1db954" : "#1e1e1e",
+            }}
+          >
+            🎹 No capo
+          </button>
 
-        <button
-          onClick={() => setShowNewOnly(!showNewOnly)}
-          style={{
-            ...styles.filterButton,
-            background: showNewOnly ? "#ff9800" : "#333",
-          }}
-        >
-          ✨ NEW
-        </button>
-      </div>
+          <button
+            onClick={() => setShowNewOnly(!showNewOnly)}
+            style={{
+              ...styles.filterButton,
+              background: showNewOnly ? "#ff9800" : "#1e1e1e",
+            }}
+          >
+            ✨ NEW
+          </button>
+        </div>
 
-      <div style={styles.grid}>
-        {filteredSongs.map((song, i) => (
-          <div key={i} style={styles.card}>
-            <div
-              onClick={() =>
-                setOpenedSong(openedSong === i ? null : i)
-              }
-              style={styles.songHeader}
-            >
-              <h2 style={styles.songName}>
-                🎸 {song.name}
-              </h2>
+        <div style={styles.grid}>
+          {filteredSongs.map((song, i) => (
+            <div key={i} style={styles.card}>
+              <div
+                style={styles.songHeader}
+                onClick={() =>
+                  setOpenedSong(openedSong === i ? null : i)
+                }
+              >
+                <div>
+                  <h2 style={styles.songName}>
+                    {song.name}
+                  </h2>
 
-              <span>
-                {openedSong === i ? "▲" : "▼"}
-              </span>
-            </div>
-
-            {openedSong === i && (
-              <>
-                <p style={styles.text}>
-                  🔥 Difficulty: <b>{song.difficulty}/3</b>
-                </p>
-
-                <p style={styles.text}>
-                  🎸 Chords: {song.chords}
-                </p>
-
-                <p style={styles.text}>
-                  🎹 Capo: {song.capo}
-                </p>
-
-                <div style={styles.buttons}>
-                  <a
-                    href={song.link}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <button style={styles.button}>
-                      Play ▶
-                    </button>
-                  </a>
-
-                  <a
-                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(song.name)}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <button style={styles.youtubeButton}>
-                      YouTube ▶
-                    </button>
-                  </a>
+                  <div style={styles.preview}>
+                    {song.chords}
+                  </div>
                 </div>
-              </>
-            )}
-          </div>
-        ))}
+
+                <div style={styles.arrow}>
+                  {openedSong === i ? "−" : "+"}
+                </div>
+              </div>
+
+              {openedSong === i && (
+                <div style={styles.expanded}>
+                  <div style={styles.infoRow}>
+                    <span>🔥 Difficulty</span>
+                    <b>{song.difficulty}/3</b>
+                  </div>
+
+                  <div style={styles.infoRow}>
+                    <span>🎹 Capo</span>
+                    <b>{song.capo}</b>
+                  </div>
+
+                  <div style={styles.chordsBox}>
+                    {song.chords}
+                  </div>
+
+                  <div style={styles.buttons}>
+                    <a
+                      href={song.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ flex: 1 }}
+                    >
+                      <button style={styles.playButton}>
+                        Play ▶
+                      </button>
+                    </a>
+
+                    <a
+                      href={`https://www.youtube.com/results?search_query=${encodeURIComponent(
+                        song.name
+                      )}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ flex: 1 }}
+                    >
+                      <button style={styles.youtubeButton}>
+                        YouTube ▶
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
@@ -439,100 +285,151 @@ function App() {
 const styles = {
   page: {
     minHeight: "100vh",
-    background: "linear-gradient(180deg, #0f0f0f, #121212)",
+    background: "#0f0f0f",
+    padding: 16,
+    fontFamily: "Arial, sans-serif",
     color: "white",
-    padding: 15,
-    fontFamily: "Arial",
+  },
+
+  container: {
+    width: "100%",
+    maxWidth: 1200,
+    margin: "0 auto",
   },
 
   title: {
-    fontSize: 28,
-    marginBottom: 15,
+    fontSize: 34,
+    fontWeight: "bold",
+    marginBottom: 20,
+    textAlign: "center",
   },
 
   search: {
     width: "100%",
-    padding: 10,
-    borderRadius: 10,
-    border: "none",
-    outline: "none",
-    marginBottom: 10,
-    background: "#1f1f1f",
+    padding: 14,
+    borderRadius: 14,
+    border: "1px solid #2a2a2a",
+    background: "#181818",
     color: "white",
-    fontSize: 15,
+    fontSize: 16,
+    marginBottom: 14,
+    boxSizing: "border-box",
   },
 
-  topButtons: {
+  filters: {
     display: "flex",
     gap: 10,
-    marginBottom: 15,
+    marginBottom: 20,
+    flexWrap: "wrap",
   },
 
   filterButton: {
     flex: 1,
-    padding: 10,
-    borderRadius: 8,
-    border: "none",
+    minWidth: 120,
+    padding: 12,
+    borderRadius: 12,
+    border: "1px solid #2a2a2a",
     color: "white",
     fontWeight: "bold",
     cursor: "pointer",
+    fontSize: 15,
   },
 
   grid: {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-    gap: 10,
+    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+    gap: 16,
   },
 
   card: {
-    background: "#1a1a1a",
-    padding: 10,
-    borderRadius: 12,
-    border: "1px solid #2a2a2a",
+    background: "#181818",
+    borderRadius: 18,
+    border: "1px solid #262626",
+    overflow: "hidden",
+    transition: "0.2s",
   },
 
   songHeader: {
+    padding: 16,
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     cursor: "pointer",
+    gap: 12,
   },
 
   songName: {
     margin: 0,
-    fontSize: 16,
+    fontSize: 18,
+    marginBottom: 6,
   },
 
-  text: {
-    margin: "4px 0",
-    color: "#b3b3b3",
-    fontSize: 14,
+  preview: {
+    color: "#9e9e9e",
+    fontSize: 13,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    maxWidth: 200,
+  },
+
+  arrow: {
+    fontSize: 28,
+    color: "#1db954",
+    fontWeight: "bold",
+  },
+
+  expanded: {
+    padding: 16,
+    paddingTop: 0,
+  },
+
+  infoRow: {
+    display: "flex",
+    justifyContent: "space-between",
+    marginBottom: 10,
+    color: "#cfcfcf",
+  },
+
+  chordsBox: {
+    background: "#111",
+    padding: 12,
+    borderRadius: 12,
+    marginTop: 10,
+    marginBottom: 14,
+    fontWeight: "bold",
+    color: "#1db954",
+    fontSize: 15,
+    overflowX: "auto",
   },
 
   buttons: {
     display: "flex",
-    gap: 8,
-    marginTop: 10,
+    gap: 10,
   },
 
-  button: {
-    padding: 8,
-    borderRadius: 8,
+  playButton: {
+    width: "100%",
+    padding: 12,
+    borderRadius: 10,
     border: "none",
     background: "#1db954",
     color: "black",
     fontWeight: "bold",
     cursor: "pointer",
+    fontSize: 14,
   },
 
   youtubeButton: {
-    padding: 8,
-    borderRadius: 8,
+    width: "100%",
+    padding: 12,
+    borderRadius: 10,
     border: "none",
     background: "#ff0000",
     color: "white",
     fontWeight: "bold",
     cursor: "pointer",
+    fontSize: 14,
   },
 }
 
