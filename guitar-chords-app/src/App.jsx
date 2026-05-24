@@ -35,7 +35,7 @@ function App() {
     { name: "Lovefool", difficulty: 2, chords: "Bm E A", capo: 0, link: "https://www.cifraclub.com/the-cardigans/lovefool/" },
     { name: "Mary on a cross", difficulty: 2, chords: "Em G D Bm", capo: 4, link: "https://tabs.ultimate-guitar.com/tab/ghost/mary-on-a-cross-chords-2825666" },
 
-    // NEW
+    // NEW SONGS
     { name: "Best friend", difficulty: 2, chords: "F G# Am", capo: 2, link: "https://tabs.ultimate-guitar.com/tab/rex-orange-county/best-friend-chords-1954795", isNew: true },
     { name: "Whats up", difficulty: 1, chords: "G C Am", capo: 2, link: "https://tabs.ultimate-guitar.com/tab/4-non-blondes/whats-up-chords-349210", isNew: true },
     { name: "Šrouby a matice", difficulty: 2, chords: "A D E Hm", capo: 0, link: "https://pisnicky-akordy.cz/mandrage/srouby-a-matice?format=pdf", isNew: true },
@@ -59,18 +59,21 @@ function App() {
     const matchesSearch = song.name.toLowerCase().includes(search.toLowerCase())
     const matchesCapo = !noCapo || song.capo === 0
     const matchesNew = !showNewOnly || song.isNew === true
-
     return matchesSearch && matchesCapo && matchesNew
   })
 
+  const [theme] = useState({
+    bg: "#121212",
+    card: "#181818",
+  })
+
   return (
-    <div style={{ minHeight: "100vh", background: "#121212", color: "white", padding: 20 }}>
+    <div style={{ minHeight: "100vh", background: theme.bg, color: "white", padding: 20 }}>
 
       {/* HEADER */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <h1>🎸 Akordíky</h1>
 
-        {/* theme */}
         <div style={{ display: "flex", gap: 8 }}>
           {["#1db954", "#ff4d4d", "#4da6ff", "#ffcc00", "#b84dff"].map((c) => (
             <div
@@ -93,7 +96,7 @@ function App() {
       <input
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search..."
+        placeholder="Search songs..."
         style={{
           width: "100%",
           padding: 12,
@@ -136,73 +139,61 @@ function App() {
         </button>
       </div>
 
-      {/* SONGS */}
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-        gap: 15,
-        marginTop: 20,
-      }}>
+      {/* GRID */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 15, marginTop: 20 }}>
         {filteredSongs.map((song, i) => (
           <div
             key={i}
-            style={{
-              background: "#181818",
-              padding: 15,
-              borderRadius: 12,
-              border: "1px solid #2a2a2a",
-            }}
+            style={{ background: theme.card, padding: 15, borderRadius: 12, cursor: "pointer" }}
+            onClick={() => setOpenedSong(openedSong === i ? null : i)}
           >
             <h3 style={{ margin: 0 }}>{song.name}</h3>
-            <div style={{ color: themeColor, fontWeight: "bold" }}>{song.chords}</div>
 
-            {/* OPEN */}
-            <button
-              onClick={() =>
-                setOpenedSong(openedSong === i ? null : i)
-              }
-              style={{
-                marginTop: 10,
-                width: "100%",
-                padding: 10,
-                borderRadius: 10,
-                border: "none",
-                background: themeColor,
-                fontWeight: "bold",
-                cursor: "pointer",
-              }}
-            >
-              Open ▶
-            </button>
+            <div style={{ color: themeColor, fontWeight: "bold" }}>
+              {song.chords}
+            </div>
 
-            {/* YOUTUBE BUTTON */}
-            <a
-              href={`https://www.youtube.com/results?search_query=${encodeURIComponent(song.name)}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <button
-                style={{
-                  marginTop: 8,
-                  width: "100%",
-                  padding: 10,
-                  borderRadius: 10,
-                  border: "none",
-                  background: "#ff0000",
-                  color: "white",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                }}
-              >
-                YouTube ▶
-              </button>
-            </a>
-
-            {/* EXPANDED */}
             {openedSong === i && (
-              <div style={{ marginTop: 10 }}>
+              <div style={{ marginTop: 10, borderTop: "1px solid #333", paddingTop: 10 }}>
+
                 <div>🔥 Difficulty: {song.difficulty}/3</div>
                 <div>🎹 Capo: {song.capo}</div>
+
+                <a href={song.link} target="_blank" rel="noreferrer">
+                  <button style={{
+                    marginTop: 8,
+                    width: "100%",
+                    padding: 10,
+                    borderRadius: 10,
+                    border: "none",
+                    background: themeColor,
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                  }}>
+                    Open chords ▶
+                  </button>
+                </a>
+
+                <a
+                  href={`https://www.youtube.com/results?search_query=${encodeURIComponent(song.name)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <button style={{
+                    marginTop: 8,
+                    width: "100%",
+                    padding: 10,
+                    borderRadius: 10,
+                    border: "none",
+                    background: "#ff0000",
+                    color: "white",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                  }}>
+                    YouTube ▶
+                  </button>
+                </a>
+
               </div>
             )}
           </div>
