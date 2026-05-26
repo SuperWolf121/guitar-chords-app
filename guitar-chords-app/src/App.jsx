@@ -386,7 +386,7 @@ const DIALOG = [
   { speaker: "O", text: "A co děláš?", song: "Dej mi víc své lásky" },
 ]
 
-const DIALOG_PASSWORD = "AHOJ67denben."
+const DIALOG_PASSWORD = "denysjenej"
 
 function SetlistTab({ accent }) {
   const songMap = Object.fromEntries(SETLIST_SONGS.map(s => [s.name, s.link]))
