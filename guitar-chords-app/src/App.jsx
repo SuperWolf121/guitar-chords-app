@@ -388,9 +388,8 @@ const DIALOG = [
 
 const DIALOG_PASSWORD = "denysjenej"
 
-function SetlistTab({ accent }) {
+function SetlistTab({ accent, dialogUnlocked, setDialogUnlocked }) {
   const songMap = Object.fromEntries(SETLIST_SONGS.map(s => [s.name, s.link]))
-  const [dialogUnlocked, setDialogUnlocked] = useState(false)
   const [pwInput, setPwInput] = useState("")
   const [pwError, setPwError] = useState(false)
 
@@ -429,7 +428,18 @@ function SetlistTab({ accent }) {
         ))}
       </div>
 
-      <p style={{ fontSize: 12, color: "#555", marginBottom: 14, letterSpacing: "0.05em", textTransform: "uppercase" }}>Dialog</p>
+      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+        <p style={{ margin: 0, fontSize: 12, color: "#555", letterSpacing: "0.05em", textTransform: "uppercase" }}>Dialog</p>
+        {dialogUnlocked && (
+          <button onClick={() => setDialogUnlocked(false)} style={{
+            marginLeft: "auto", display: "flex", alignItems: "center", gap: 5,
+            background: "transparent", border: "1px solid #2a2a2a", borderRadius: 20,
+            padding: "4px 10px", cursor: "pointer", color: "#555", fontSize: 11,
+          }}>
+            🔒 Zamknout
+          </button>
+        )}
+      </div>
 
       {!dialogUnlocked ? (
         <div style={{
@@ -512,8 +522,9 @@ function SetlistTab({ accent }) {
 // ── MAIN APP ──────────────────────────────────────────────────────────────────
 
 export default function App() {
-  const [activeTab, setActiveTab]         = useState("akordy") // "akordy" | "setlist"
+  const [activeTab, setActiveTab]         = useState("akordy")
   const [showFilters, setShowFilters]     = useState(false)
+  const [dialogUnlocked, setDialogUnlocked] = useState(false)
   const [search, setSearch]               = useState("")
   const [noCapo, setNoCapo]               = useState(false)
   const [showNewOnly, setShowNewOnly]     = useState(false)
@@ -642,7 +653,7 @@ export default function App() {
         </div>
       </div>
 
-      {activeTab === "setlist" && <SetlistTab accent={accent} />}
+      {activeTab === "setlist" && <SetlistTab accent={accent} dialogUnlocked={dialogUnlocked} setDialogUnlocked={setDialogUnlocked} />}
       {activeTab === "akordy" && (<>
 
       {/* ── SEARCH BAR ── */}
