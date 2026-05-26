@@ -524,7 +524,7 @@ function SetlistTab({ accent, dialogUnlocked, setDialogUnlocked }) {
 export default function App() {
   const [activeTab, setActiveTab]         = useState("akordy")
   const [showFilters, setShowFilters]     = useState(false)
-  const [dialogUnlocked, setDialogUnlocked] = useState(false)
+  const [dialogUnlocked, setDialogUnlocked] = useState(() => loadLS("dialogUnlocked", false))
   const [search, setSearch]               = useState("")
   const [noCapo, setNoCapo]               = useState(false)
   const [showNewOnly, setShowNewOnly]     = useState(false)
@@ -544,6 +544,7 @@ export default function App() {
   useEffect(() => saveLS("accent", accent), [accent])
   useEffect(() => saveLS("favorites", favorites), [favorites])
   useEffect(() => saveLS("recentlyPlayed", recentlyPlayed), [recentlyPlayed])
+  useEffect(() => saveLS("dialogUnlocked", dialogUnlocked), [dialogUnlocked])
 
   const toggleFav = useCallback((name) => {
     setFavorites(prev => prev.includes(name) ? prev.filter(n => n !== name) : [...prev, name])
