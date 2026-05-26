@@ -35,6 +35,37 @@ const SONGS = [
   { name: "Být stále mlád",           difficulty: 1, chords: "G D Em C Am",          capo: 0, link: "https://pisnicky-akordy.cz/karel-gott/byt-stale-mlad?format=pdf",                           tag: "ceske" },
   { name: "Čekám na signál",          difficulty: 3, chords: "F# G#m C#m H",         capo: 0, link: "https://akordy.kytary.cz/song/cekam-na-signal",                                             tag: "ceske" },
 
+  { name: "26",                            difficulty: 2, chords: "G E F C",              capo: 0, link: "https://akordy.kytary.cz/song/26",                                                                                                          tag: "zahranicni" },
+  { name: "Babydoll",                       difficulty: 2, chords: "Gm A Dm",              capo: 0, link: "https://tabs.ultimate-guitar.com/tab/dominic-fike/babydoll-chords-2937476",                                                                    tag: "zahranicni" },
+  { name: "Báječná ženská",                difficulty: 1, chords: "G C D7 A",             capo: 0, link: "https://www.yousongs.cz/pisen/21462-Tucny-Michal-Bajecna-zenska-(bez-capo).aspx",                                                               tag: "ceske" },
+  { name: "Be my baby",                     difficulty: 2, chords: "C Dm G E7",            capo: 4, link: "https://tabs.ultimate-guitar.com/tab/the-ronettes/be-my-baby-chords-958714",                                                                   tag: "zahranicni" },
+  { name: "Bedna od Whisky",                difficulty: 1, chords: "Am C Em E",            capo: 0, link: "https://akordy.kytary.cz/song/bena-od-whisky",                                                                                                  tag: "ceske" },
+  { name: "Bláznová ukolébavka",           difficulty: 1, chords: "G D C A",              capo: 0, link: "https://kytaristka.cz/zpevnik/pavel-dydovic/blaznova-ukolebavka",                                                                               tag: "ceske" },
+  { name: "Budu Ti Vyprávět",             difficulty: 2, chords: "D F#m Hm G",           capo: 0, link: "https://akordy.kytary.cz/song/budu-ti-vypravet",                                                                                                 tag: "ceske" },
+  { name: "Cant take my eyes off you",      difficulty: 2, chords: "C F Fm D",             capo: 0, link: "https://guitartuna.com/chords/cant-take-my-eyes-off-you-andy-williams-easy-guitar-chords-6217b2f67d0e3fa4285c2ed2",                            tag: "zahranicni" },
+  { name: "Copacabana",                     difficulty: 3, chords: "Fm Bb Cm",             capo: 0, link: "https://guitartuna.com/chords/copacabana-at-the-copa-barry-manilow-easy-guitar-chords-621f8d9550cb7457161fae3b",                               tag: "zahranicni" },
+  { name: "End of beginning",               difficulty: 2, chords: "D Bm A",               capo: 0, link: "https://tabs.ultimate-guitar.com/tab/djo/end-of-beginning-chords-4351838",                                                                     tag: "zahranicni" },
+  { name: "Everybody wants to rule the world", difficulty: 2, chords: "Em F#m Bm C",      capo: 0, link: "https://tabs.ultimate-guitar.com/tab/tears-for-fears/everybody-wants-to-rule-the-world-chords-1503308",                                        tag: "zahranicni" },
+  { name: "Hit the road Jack",              difficulty: 2, chords: "Am G F E",             capo: 0, link: "https://tabs.ultimate-guitar.com/tab/ray-charles/hit-the-road-jack-chords-168021",                                                             tag: "zahranicni" },
+  { name: "Holky z naší školky",          difficulty: 1, chords: "D G A A7",             capo: 1, link: "https://www.yousongs.cz/pisen/15204-Hlozek-Stanislav-Holky-z-nasi-skolky.aspx",                                                                 tag: "ceske" },
+  { name: "Hvězda na vrbě",               difficulty: 3, chords: "Am F Em G7",           capo: 0, link: "https://pisnicky-akordy.cz/taborove-pisne/hvezda-na-vrbe?format=pdf",                                                                           tag: "ceske" },
+  { name: "Kiss me",                        difficulty: 2, chords: "C Cmaj7 Dm",           capo: 3, link: "https://tabs.ultimate-guitar.com/tab/sixpence-none-the-richer/kiss-me-chords-2704",                                                            tag: "zahranicni" },
+  { name: "Lemon tree",                     difficulty: 2, chords: "Am Em Dm",             capo: 8, link: "https://tabs.ultimate-guitar.com/tab/fools-garden/lemon-tree-chords-607747",                                                                   tag: "zahranicni" },
+  { name: "Motýli",                        difficulty: 2, chords: "Hm G Em",              capo: 0, link: "https://kytaristka.cz/zpevnik/mandrage/motyli",                                                                                                  tag: "ceske" },
+  { name: "Out of my league",               difficulty: 2, chords: "F G C Am",             capo: 0, link: "https://tabs.ultimate-guitar.com/tab/fitz-and-the-tantrums/out-of-my-league-chords-1401040",                                                   tag: "zahranicni" },
+  { name: "Pohoda",                         difficulty: 2, chords: "F#m C#m E D",          capo: 0, link: "https://akordy.kytary.cz/song/pohoda",                                                                                                          tag: "ceske" },
+  { name: "Put your head on my shoulder",   difficulty: 3, chords: "F# Fm A",              capo: 0, link: "https://guitartuna.com/chords/put-your-head-on-my-shoulder-paul-anka-easy-guitar-chords-61c1ee0d2656a3cdf92d96be",                             tag: "zahranicni" },
+  { name: "Řiditel autobusu",              difficulty: 2, chords: "Am F E Dm",            capo: 0, link: "https://akordy.kytary.cz/song/riditel-autobusu-2",                                                                                              tag: "ceske" },
+  { name: "Sailor Song",                    difficulty: 1, chords: "C Em G",               capo: 4, link: "https://tabs.ultimate-guitar.com/tab/gigi-perez/sailor-song-chords-5363001",                                                                   tag: "zahranicni" },
+  { name: "Sbohem lásko",                  difficulty: 2, chords: "C F G7 Fm Em",         capo: 0, link: "https://pisnicky-akordy.cz/waldemar-matuska/sbohem-lasko?format=pdf",                                                                           tag: "ceske" },
+  { name: "Self aware",                     difficulty: 2, chords: "Am C F Dm",            capo: 0, link: "https://tabs.ultimate-guitar.com/tab/temper-city/self-aware-chords-6170777",                                                                   tag: "zahranicni" },
+  { name: "Severní vítr",                  difficulty: 3, chords: "D Hm H F#m",           capo: 0, link: "https://pisnicky-akordy.cz/sverak-uhlir/severni-vitr?format=pdf",                                                                              tag: "ceske" },
+  { name: "Sweater weather",                difficulty: 1, chords: "C Am Em G",            capo: 3, link: "https://tabs.ultimate-guitar.com/tab/the-neighbourhood/sweater-weather-chords-1237978",                                                        tag: "zahranicni" },
+  { name: "Television, so far so good",     difficulty: 2, chords: "C Em F G",             capo: 5, link: "https://tabs.ultimate-guitar.com/tab/rex-orange-county/television-so-far-so-good-chords-2624304",                                             tag: "zahranicni" },
+  { name: "Tereza (Osamělé město)",        difficulty: 1, chords: "C D G Em",             capo: 0, link: "https://akordy.kytary.cz/song/osamele-mesto-tereza",                                                                                            tag: "ceske" },
+  { name: "Those eyes",                     difficulty: 3, chords: "F#m A B E",            capo: 0, link: "https://tabs.ultimate-guitar.com/tab/new-west/those-eyes-chords-2734944",                                                                      tag: "zahranicni" },
+  { name: "Zakázané uvolnění",             difficulty: 2, chords: "D F# A G Hm",         capo: 0, link: "https://akordy.kytary.cz/song/zakazane-uvolneni",                                                                                               tag: "ceske" },
+
   // ── NEW (od Máme jen sebe po Řekni kde ty kytky jsou) ──
   { name: "Máme jen sebe",            difficulty: 2, chords: "Am F E Dm",            capo: 4, link: "https://pisnicky-akordy.cz/nedvedi/mame-jen-sebe",                                           tag: "ceske",      isNew: true },
   { name: "The loneliest",             difficulty: 2, chords: "Bm F#m E Em",          capo: 0, link: "https://tabs.ultimate-guitar.com/tab/maneskin/the-loneliest-chords-4375667",                tag: "zahranicni", isNew: true },
@@ -290,9 +321,199 @@ function SongCard({ song, accent, isOpen, onToggle, isFav, onFavToggle, onChordC
   )
 }
 
+
+// ── SETLIST DATA ─────────────────────────────────────────────────────────────
+
+const SETLIST_SONGS = [
+  { name: "Matfyzák na discu",      link: "https://kytaristka.cz/zpevnik/pokac/matfyzak-na-discu" },
+  { name: "Cudzinka v tvojej zemi", link: "https://akordy.kytary.cz/song/cudzinka-v-tvojej-zemi" },
+  { name: "Pro Emu",                link: "https://akordy.kytary.cz/song/pro-emu" },
+  { name: "Stánky",                 link: "https://akordy.kytary.cz/song/stanky" },
+  { name: "Bedna od Whisky",        link: "https://akordy.kytary.cz/song/bena-od-whisky" },
+  { name: "Malování",               link: "https://www.google.com/search?q=Malování+chords" },
+  { name: "Růže z papíru",         link: "https://akordy.kytary.cz/song/ruze-z-papiru" },
+  { name: "Hledá se žena",         link: "https://pisnicky-akordy.cz/mandrage/hleda-se-zena?format=pdf" },
+  { name: "V blbým věku",          link: "https://www.supermusic.cz/piesen.php?idpiesne=781955" },
+  { name: "Milenci v texaskách",   link: "https://pisnicky-akordy.cz/taborove-pisne/milenci-v-texaskach" },
+  { name: "Báječná ženská",        link: "https://www.yousongs.cz/pisen/21462-Tucny-Michal-Bajecna-zenska-(bez-capo).aspx" },
+  { name: "Prodavač",              link: "https://kytaristka.cz/zpevnik/fesaci/prodavac" },
+  { name: "Zakázané uvolnění",     link: "https://akordy.kytary.cz/song/zakazane-uvolneni" },
+  { name: "Motýli",                link: "https://kytaristka.cz/zpevnik/mandrage/motyli" },
+  { name: "Dej mi víc své lásky",  link: "https://pisnicky-akordy.cz/olympic/dej-mi-vic-sve-lasky" },
+]
+
+const DIALOG = [
+  { speaker: "D", text: "Kámo, našel jsem si holku." },
+  { speaker: "O", text: "Nene…", song: "Matfyzák na discu" },
+  { speaker: "D", text: "Tak to nevyšlo, ale teď jedna ze Slovenska." },
+  { speaker: "O", text: "Nice.", song: "Cudzinka v tvojej zemi" },
+  { speaker: "D", text: "Jenže jsem jí skoro nerozuměl." },
+  { speaker: "O", text: "To nevadí." },
+  { speaker: "D", text: "Ale…" },
+  { speaker: "O", text: "Ty vole.", song: "Pro Emu" },
+  { speaker: "D", text: "Rozešli jsme se, ale něco mě naučila." },
+  { speaker: "O", text: "Co?" },
+  { speaker: "D", text: "Být závislej na trávě." },
+  { speaker: "O", text: '"Děláš si ze mě…"', song: "Stánky" },
+  { speaker: "D", text: "Teď už trávu ne." },
+  { speaker: "O", text: "Takže vše OK?" },
+  { speaker: "D", text: "No… teď whisky." },
+  { speaker: "O", text: '"Denysi, co to kurv—"', song: "Bedna od Whisky" },
+  { speaker: "O", text: "Ty ses opil." },
+  { speaker: "D", text: "Nice svatba mimochodem." },
+  { speaker: "O", text: "Díky." },
+  { speaker: "D", text: "Co dělá Viol?", song: "Malování" },
+  { speaker: "D", text: "A cos dal za dárek?" },
+  { speaker: "O", text: "Růži z papíru lowkey.", song: "Růže z papíru" },
+  { speaker: "O", text: "A co ty a ženský?" },
+  { speaker: "D", text: "No…", song: "Hledá se žena" },
+  { speaker: "D", text: "Kámo, je to na nic." },
+  { speaker: "O", text: "Možná jsi v blbým věku.", song: "V blbým věku" },
+  { speaker: "D", text: "Chtěl bych vztah jak Pavel a Michaela." },
+  { speaker: "O", text: "Kdo?" },
+  { speaker: "D", text: "Prarodiče. Byli spolu i v Texasu.", song: "Milenci v texaskách" },
+  { speaker: "O", text: "Život je báječnej." },
+  { speaker: "D", text: 'Proč pořád říkáš "báječnej"?' },
+  { speaker: "O", text: "Protože máš báječnou ženskou.", song: "Báječná ženská" },
+  { speaker: "D", text: "A co vlastně děláš?" },
+  { speaker: "O", text: "Jsem král prodavačů.", song: "Prodavač" },
+  { speaker: "O", text: "Jen furt počítám a je to hrozný." },
+  { speaker: "D", text: "No jo… někdy to tak je.", song: "Zakázané uvolnění" },
+  { speaker: "O", text: "Počítání je těžký a—" },
+  { speaker: "D", text: "Ty vole, vidíš tu holku? Co je ten pocit v břiše?", song: "Motýli" },
+  { speaker: "O", text: "Promluvil sis s ní?" },
+  { speaker: "D", text: "Jo, bavíme se… ale je to divný." },
+  { speaker: "O", text: "A co děláš?", song: "Dej mi víc své lásky" },
+]
+
+const DIALOG_PASSWORD = "denyse"
+
+function SetlistTab({ accent }) {
+  const songMap = Object.fromEntries(SETLIST_SONGS.map(s => [s.name, s.link]))
+  const [dialogUnlocked, setDialogUnlocked] = useState(false)
+  const [pwInput, setPwInput] = useState("")
+  const [pwError, setPwError] = useState(false)
+
+  const tryUnlock = () => {
+    if (pwInput.toLowerCase() === DIALOG_PASSWORD) {
+      setDialogUnlocked(true)
+      setPwError(false)
+    } else {
+      setPwError(true)
+      setPwInput("")
+    }
+  }
+
+  return (
+    <div style={{ padding: "0 0 40px" }}>
+      <p style={{ fontSize: 12, color: "#555", marginBottom: 12, letterSpacing: "0.05em", textTransform: "uppercase" }}>Repertoár</p>
+      <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 28 }}>
+        {SETLIST_SONGS.map((s, i) => (
+          <a key={i} href={s.link} target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>
+            <div
+              style={{
+                display: "flex", alignItems: "center", gap: 12,
+                background: "#181818", border: "1px solid #242424",
+                borderRadius: 10, padding: "10px 14px", transition: "border-color 0.15s",
+              }}
+              onMouseEnter={e => e.currentTarget.style.borderColor = accent + "66"}
+              onMouseLeave={e => e.currentTarget.style.borderColor = "#242424"}
+            >
+              <span style={{ fontSize: 12, color: "#444", width: 18 }}>{i + 1}.</span>
+              <span style={{ fontSize: 14, color: "#eee", fontWeight: 600, flex: 1 }}>{s.name}</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <p style={{ fontSize: 12, color: "#555", marginBottom: 14, letterSpacing: "0.05em", textTransform: "uppercase" }}>Dialog</p>
+
+      {!dialogUnlocked ? (
+        <div style={{
+          background: "#181818", border: "1px solid #2a2a2a", borderRadius: 14,
+          padding: "24px 20px", display: "flex", flexDirection: "column", alignItems: "center", gap: 12,
+        }}>
+          <div style={{ fontSize: 28 }}>🔒</div>
+          <p style={{ margin: 0, fontSize: 13, color: "#666", textAlign: "center" }}>Dialog je zaheslovaný</p>
+          <div style={{ display: "flex", gap: 8, width: "100%", maxWidth: 280 }}>
+            <input
+              value={pwInput}
+              onChange={e => { setPwInput(e.target.value); setPwError(false) }}
+              onKeyDown={e => e.key === "Enter" && tryUnlock()}
+              placeholder="Heslo…"
+              type="password"
+              style={{
+                flex: 1, padding: "10px 12px", borderRadius: 10,
+                border: "1px solid " + (pwError ? "#ff4444" : "#2a2a2a"),
+                background: "#111", color: "white", fontSize: 14, outline: "none",
+              }}
+            />
+            <button onClick={tryUnlock} style={{
+              padding: "10px 16px", borderRadius: 10, border: "none",
+              background: accent, color: "#000", fontWeight: 700, fontSize: 13, cursor: "pointer",
+            }}>→</button>
+          </div>
+          {pwError && <p style={{ margin: 0, fontSize: 12, color: "#ff4444" }}>Špatné heslo</p>}
+        </div>
+      ) : (
+      <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+        {DIALOG.map((line, i) => {
+          const isD = line.speaker === "D"
+          return (
+            <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: isD ? "flex-start" : "flex-end" }}>
+              <div style={{
+                maxWidth: "82%",
+                background: isD ? "#1e1e1e" : "#1a2a1a",
+                border: "1px solid " + (isD ? "#2a2a2a" : accent + "33"),
+                borderRadius: isD ? "4px 14px 14px 14px" : "14px 4px 14px 14px",
+                padding: "8px 12px",
+                marginBottom: line.song ? 2 : 0,
+              }}>
+                <span style={{ fontSize: 11, fontWeight: 700, color: isD ? "#666" : accent, marginRight: 6 }}>
+                  {isD ? "D:" : "O:"}
+                </span>
+                <span style={{ fontSize: 13, color: isD ? "#ccc" : "#ddd" }}>{line.text}</span>
+              </div>
+              {line.song && songMap[line.song] && (
+                <a
+                  href={songMap[line.song]}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    display: "inline-flex", alignItems: "center", gap: 5,
+                    marginBottom: 6,
+                    marginLeft: isD ? 0 : "auto",
+                    background: accent + "18",
+                    border: "1px solid " + accent + "44",
+                    borderRadius: 20,
+                    padding: "3px 10px 3px 8px",
+                    textDecoration: "none",
+                    transition: "background 0.15s",
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.background = accent + "33"}
+                  onMouseLeave={e => e.currentTarget.style.background = accent + "18"}
+                >
+                  <span style={{ fontSize: 12 }}>🎸</span>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: accent }}>{line.song}</span>
+                </a>
+              )}
+            </div>
+          )
+        })}
+      </div>
+      )}
+    </div>
+  )
+}
+
 // ── MAIN APP ──────────────────────────────────────────────────────────────────
 
 export default function App() {
+  const [activeTab, setActiveTab]         = useState("akordy") // "akordy" | "setlist"
+  const [showFilters, setShowFilters]     = useState(false)
   const [search, setSearch]               = useState("")
   const [noCapo, setNoCapo]               = useState(false)
   const [showNewOnly, setShowNewOnly]     = useState(false)
@@ -356,6 +577,8 @@ export default function App() {
 
   const clearChord = () => setActiveChord(null)
 
+  const activeFilterCount = [noCapo, showNewOnly, showFavOnly, showRecentOnly, tagFilter !== "vse", sortBy !== "default"].filter(Boolean).length
+
   return (
     <div style={{ minHeight: "100vh", background: "#111", color: "white", padding: "18px 16px 60px" }}>
       {showSearchModal && <SearchModal onClose={() => setShowSearchModal(false)} accent={accent} />}
@@ -378,6 +601,19 @@ export default function App() {
               }} />
             ))}
           </div>
+
+          {/* Setlist button */}
+          <button onClick={() => setActiveTab(activeTab === "setlist" ? "akordy" : "setlist")} title="Setlist" style={{
+            background: activeTab === "setlist" ? accent : "#1e1e1e",
+            border: "1px solid " + (activeTab === "setlist" ? accent : "#2a2a2a"),
+            borderRadius: 8, padding: "0 11px", height: 34,
+            display: "flex", alignItems: "center", gap: 5,
+            cursor: "pointer", fontSize: 12, fontWeight: 700,
+            color: activeTab === "setlist" ? "#000" : "#777",
+            transition: "all 0.15s",
+          }}>
+            🎭 <span style={{ fontSize: 11 }}>Setlist</span>
+          </button>
 
           {/* List / Grid toggle */}
           <button onClick={() => setListView(v => !v)} title={listView ? "Grid" : "Seznam"} style={{
@@ -406,6 +642,9 @@ export default function App() {
         </div>
       </div>
 
+      {activeTab === "setlist" && <SetlistTab accent={accent} />}
+      {activeTab === "akordy" && (<>
+
       {/* ── SEARCH BAR ── */}
       <div style={{ position: "relative", marginBottom: 10 }}>
         <div style={{ position: "absolute", left: 13, top: "50%", transform: "translateY(-50%)", opacity: 0.3 }}>
@@ -422,61 +661,86 @@ export default function App() {
 
       {/* ── ACTIVE CHORD BANNER ── */}
       {activeChord && (
-        <div style={{ display: "flex", alignItems: "center", gap: 8, background: accent + "18", border: `1px solid ${accent}44`, borderRadius: 10, padding: "8px 12px", marginBottom: 10 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, background: accent + "18", border: "1px solid " + accent + "44", borderRadius: 10, padding: "8px 12px", marginBottom: 10 }}>
           <span style={{ fontSize: 13, color: accent, fontWeight: 600 }}>🎵 Filtr: akord <strong>{activeChord}</strong></span>
           <button onClick={clearChord} style={{ marginLeft: "auto", background: "none", border: "none", color: accent, cursor: "pointer", fontSize: 18, lineHeight: 1 }}>×</button>
         </div>
       )}
 
-      {/* ── FILTERS ROW 1 ── */}
-      <div style={{ display: "flex", gap: 6, marginBottom: 8, flexWrap: "wrap" }}>
-        {[
-          { label: "Bez kapa",  active: noCapo,        toggle: () => setNoCapo(v => !v) },
-          { label: "✨ Nové",   active: showNewOnly,    toggle: () => setShowNewOnly(v => !v) },
-          { label: "♥ Oblíbené", active: showFavOnly,  toggle: () => setShowFavOnly(v => !v) },
-          { label: "🕐 Nedávné", active: showRecentOnly, toggle: () => setShowRecentOnly(v => !v) },
-        ].map(({ label, active, toggle }) => (
-          <button key={label} onClick={toggle} style={{
+      {/* ── FILTERS (collapsible list) ── */}
+      <div style={{ marginBottom: 14 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: showFilters ? 10 : 0 }}>
+          <button onClick={() => setShowFilters(v => !v)} style={{
+            display: "flex", alignItems: "center", gap: 6,
             padding: "7px 13px", borderRadius: 20,
-            border: active ? "none" : "1px solid #242424",
-            background: active ? accent : "transparent",
-            color: active ? "#000" : "#777",
-            fontWeight: active ? 700 : 400, fontSize: 12, cursor: "pointer", transition: "all 0.15s",
-          }}>{label}</button>
-        ))}
-      </div>
+            border: "1px solid #242424", background: "transparent",
+            color: "#777", fontSize: 12, cursor: "pointer",
+          }}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+            Filtry
+            {activeFilterCount > 0 && (
+              <span style={{ background: accent, color: "#000", borderRadius: "50%", width: 16, height: 16, fontSize: 10, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center" }}>{activeFilterCount}</span>
+            )}
+          </button>
+          <span style={{ marginLeft: "auto", fontSize: 11, color: "#444" }}>{displaySongs.length} písní</span>
+        </div>
 
-      {/* ── FILTERS ROW 2: tag + sort ── */}
-      <div style={{ display: "flex", gap: 6, marginBottom: 16, flexWrap: "wrap", alignItems: "center" }}>
-        {/* Tag filter */}
-        {[
-          { val: "vse", label: "Vše" },
-          { val: "ceske", label: "🇨🇿 České" },
-          { val: "zahranicni", label: "🌍 Zahraniční" },
-        ].map(({ val, label }) => (
-          <button key={val} onClick={() => setTagFilter(val)} style={{
-            padding: "6px 12px", borderRadius: 20,
-            border: tagFilter === val ? "none" : "1px solid #242424",
-            background: tagFilter === val ? accent + "33" : "transparent",
-            color: tagFilter === val ? accent : "#666",
-            fontWeight: tagFilter === val ? 700 : 400, fontSize: 12, cursor: "pointer", transition: "all 0.15s",
-          }}>{label}</button>
-        ))}
+        {showFilters && (
+          <div style={{ background: "#161616", border: "1px solid #242424", borderRadius: 12, padding: "14px 14px 10px", display: "flex", flexDirection: "column", gap: 12 }}>
 
-        <div style={{ width: 1, height: 18, background: "#2a2a2a", margin: "0 2px" }} />
+            {/* Rychlé filtry */}
+            <div>
+              <p style={{ margin: "0 0 7px", fontSize: 10, color: "#555", textTransform: "uppercase", letterSpacing: "0.06em" }}>Rychlé filtry</p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                {[
+                  { label: "Bez kapa",    active: noCapo,          toggle: () => setNoCapo(v => !v) },
+                  { label: "✨ Nové",     active: showNewOnly,      toggle: () => setShowNewOnly(v => !v) },
+                  { label: "♥ Oblíbené", active: showFavOnly,      toggle: () => setShowFavOnly(v => !v) },
+                  { label: "🕐 Nedávné", active: showRecentOnly,   toggle: () => setShowRecentOnly(v => !v) },
+                ].map(({ label, active, toggle }) => (
+                  <button key={label} onClick={toggle} style={{
+                    padding: "6px 12px", borderRadius: 20,
+                    border: active ? "none" : "1px solid #2e2e2e",
+                    background: active ? accent : "transparent",
+                    color: active ? "#000" : "#777",
+                    fontWeight: active ? 700 : 400, fontSize: 12, cursor: "pointer", transition: "all 0.15s",
+                  }}>{label}</button>
+                ))}
+              </div>
+            </div>
 
-        {/* Sort */}
-        <select value={sortBy} onChange={e => setSortBy(e.target.value)} style={{
-          padding: "6px 10px", borderRadius: 20, border: "1px solid #242424",
-          background: "#171717", color: "#888", fontSize: 12, cursor: "pointer", outline: "none",
-        }}>
-          <option value="default">Pořadí: výchozí</option>
-          <option value="az">A–Z</option>
-          <option value="diff_asc">Obtížnost ↑</option>
-          <option value="diff_desc">Obtížnost ↓</option>
-        </select>
+            {/* Jazyk */}
+            <div>
+              <p style={{ margin: "0 0 7px", fontSize: 10, color: "#555", textTransform: "uppercase", letterSpacing: "0.06em" }}>Jazyk</p>
+              <div style={{ display: "flex", gap: 6 }}>
+                {[{ val: "vse", label: "Vše" }, { val: "ceske", label: "🇨🇿 České" }, { val: "zahranicni", label: "🌍 Zahraniční" }].map(({ val, label }) => (
+                  <button key={val} onClick={() => setTagFilter(val)} style={{
+                    padding: "6px 12px", borderRadius: 20,
+                    border: tagFilter === val ? "none" : "1px solid #2e2e2e",
+                    background: tagFilter === val ? accent + "33" : "transparent",
+                    color: tagFilter === val ? accent : "#666",
+                    fontWeight: tagFilter === val ? 700 : 400, fontSize: 12, cursor: "pointer", transition: "all 0.15s",
+                  }}>{label}</button>
+                ))}
+              </div>
+            </div>
 
-        <span style={{ marginLeft: "auto", fontSize: 11, color: "#444" }}>{displaySongs.length} písní</span>
+            {/* Řazení */}
+            <div>
+              <p style={{ margin: "0 0 7px", fontSize: 10, color: "#555", textTransform: "uppercase", letterSpacing: "0.06em" }}>Řazení</p>
+              <select value={sortBy} onChange={e => setSortBy(e.target.value)} style={{
+                padding: "7px 10px", borderRadius: 10, border: "1px solid #2e2e2e",
+                background: "#111", color: "#aaa", fontSize: 12, cursor: "pointer", outline: "none", width: "100%",
+              }}>
+                <option value="default">Výchozí pořadí</option>
+                <option value="az">A–Z</option>
+                <option value="diff_asc">Obtížnost ↑</option>
+                <option value="diff_desc">Obtížnost ↓</option>
+              </select>
+            </div>
+
+          </div>
+        )}
       </div>
 
       {/* ── GRID / LIST ── */}
@@ -507,6 +771,7 @@ export default function App() {
           {activeChord && <button onClick={clearChord} style={{ marginTop: 8, background: "none", border: `1px solid ${accent}44`, color: accent, borderRadius: 8, padding: "6px 14px", cursor: "pointer", fontSize: 12 }}>Zrušit filtr akordu</button>}
         </div>
       )}
+      </>)}
     </div>
   )
 }
