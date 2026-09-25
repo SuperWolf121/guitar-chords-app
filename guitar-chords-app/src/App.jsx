@@ -521,7 +521,459 @@ function SetlistTab({ accent, dialogUnlocked, setDialogUnlocked }) {
 
 // ── MAIN APP ──────────────────────────────────────────────────────────────────
 
+// ── TUNER ────────────────────────────────────────────────────────────────────
+
+const TUNER_NOTES = [
+  "C", "C♯", "D", "D♯", "E", "F",
+  "F♯", "G", "G♯", "A", "A♯", "H"
+]
+
+const GUITAR_STRINGS = [
+  { name: "E", frequency: 82.41 },
+  { name: "A", frequency: 110.00 },
+  { name: "D", frequency: 146.83 },
+  { name: "G", frequency: 196.00 },
+  { name: "H", frequency: 246.94 },
+  { name: "E", frequency: 329.63 },
+]
+
+function autoCorrelate(buffer, sampleRate) {
+  let rms = 0
+
+  for (let i = 0; i < buffer.length; i++) {
+    rms += buffer[i] * buffer[i]
+  }
+
+  rms = Math.sqrt(rms / buffer.length)
+
+  if (rms < 0.01) return -1
+
+  let bestOffset = -1
+  let bestCorrelation = 0
+
+  const maxOffset = Math.floor(sampleRate / 50)
+  const minOffset = Math.floor(sampleRate / 1000)
+
+  for (let offset = minOffset; offset < maxOffset; offset++) {
+    let correlation = 0
+
+    for (let i = 0; i < buffer.length - offset; i++) {
+      correlation += buffer[i] * buffer[i + offset]
+    }
+
+    correlation /= buffer.length - offset
+
+    if (correlation > bestCorrelation) {
+      bestCorrelation = correlation
+      bestOffset = offset
+    }
+  }
+
+  if (bestOffset === -1 || bestCorrelation < 0.01) return -1
+
+  return sampleRate / bestOffset
+}
+
+function Tuner({ onClose, accent }) {
+  const [listening, setListening] = useState(false)
+  const [frequency, setFrequency] = useState(null)
+  const [note, setNote] = useState(null)
+  const [cents, setCents] = useState(0)
+  const [error, setError] = useState("")
+
+  const audioContextRef = useRef(null)
+  const analyserRef = useRef(null)
+  const streamRef = useRef(null)
+  const animationRef = useRef(null)
+
+  const stopTuner = useCallback(() => {
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current)
+      animationRef.current = null
+    }
+
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach(track => track.stop())
+      streamRef.current = null
+    }
+
+    if (audioContextRef.current) {
+      audioContextRef.current.close()
+      audioContextRef.current = null
+    }
+
+    setListening(false)
+    setFrequency(null)
+    setNote(null)
+    setCents(0)
+  }, [])
+
+  const startTuner = async () => {
+    try {
+      setError("")
+
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          echoCancellation: false,
+          autoGainControl: false,
+          noiseSuppression: false,
+        },
+      })
+
+      streamRef.current = stream
+
+      const AudioContext = window.AudioContext || window.webkitAudioContext
+      const audioContext = new AudioContext()
+
+      audioContextRef.current = audioContext
+
+      const analyser = audioContext.createAnalyser()
+      analyser.fftSize = 4096
+      analyser.smoothingTimeConstant = 0.1
+
+      analyserRef.current = analyser
+
+      const source = audioContext.createMediaStreamSource(stream)
+      source.connect(analyser)
+
+      setListening(true)
+
+      const buffer = new Float32Array(analyser.fftSize)
+
+      const detect = () => {
+        if (!analyserRef.current) return
+
+        analyserRef.current.getFloatTimeDomainData(buffer)
+
+        const detectedFrequency = autoCorrelate(
+          buffer,
+          audioContext.sampleRate
+        )
+
+        if (detectedFrequency > 50 && detectedFrequency < 600) {
+          const midi =
+            12 * Math.log2(detectedFrequency / 440) + 69
+
+          const roundedMidi = Math.round(midi)
+
+          const noteIndex = ((roundedMidi % 12) + 12) % 12
+          const detectedNote = TUNER_NOTES[noteIndex]
+
+          const targetFrequency =
+            440 * Math.pow(2, (roundedMidi - 69) / 12)
+
+          const detectedCents =
+            1200 * Math.log2(detectedFrequency / targetFrequency)
+
+          setFrequency(detectedFrequency)
+          setNote(detectedNote)
+          setCents(Math.round(detectedCents))
+        }
+
+        animationRef.current = requestAnimationFrame(detect)
+      }
+
+      detect()
+    } catch (err) {
+      setError("Nepodařilo se získat přístup k mikrofonu.")
+      setListening(false)
+    }
+  }
+
+  useEffect(() => {
+    return () => stopTuner()
+  }, [stopTuner])
+
+  const absCents = Math.abs(cents)
+
+  const tunerColor =
+    !note ? "#555" :
+    absCents <= 5 ? "#4ade80" :
+    absCents <= 15 ? "#facc15" :
+    "#f87171"
+
+  const direction =
+    cents < -5 ? "♭" :
+    cents > 5 ? "♯" :
+    "✓"
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 1000,
+        background: "rgba(0,0,0,0.78)",
+        backdropFilter: "blur(7px)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 20,
+      }}
+    >
+      <div
+        onClick={e => e.stopPropagation()}
+        style={{
+          width: "min(420px, 100%)",
+          background: "#181818",
+          border: "1px solid #2c2c2c",
+          borderRadius: 18,
+          padding: 24,
+          boxShadow: "0 24px 70px rgba(0,0,0,.7)",
+        }}
+      >
+        {/* Header */}
+        <div style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginBottom: 24,
+        }}>
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 9,
+          }}>
+            <span style={{ fontSize: 22 }}>🎵</span>
+            <span style={{
+              fontSize: 17,
+              fontWeight: 800,
+            }}>
+              Ladička
+            </span>
+          </div>
+
+          <button
+            onClick={onClose}
+            style={{
+              background: "none",
+              border: "none",
+              color: "#666",
+              cursor: "pointer",
+              fontSize: 24,
+            }}
+          >
+            ×
+          </button>
+        </div>
+
+        {/* Gauge */}
+        <div style={{
+          position: "relative",
+          height: 90,
+          marginBottom: 10,
+        }}>
+          <div style={{
+            position: "absolute",
+            left: "50%",
+            top: 0,
+            bottom: 0,
+            width: 2,
+            background: "#333",
+            transform: "translateX(-50%)",
+          }} />
+
+          {[-50, -25, 0, 25, 50].map(value => (
+            <div
+              key={value}
+              style={{
+                position: "absolute",
+                left: `${50 + value / 2}%`,
+                bottom: 20,
+                width: value === 0 ? 3 : 1,
+                height: value === 0 ? 28 : 16,
+                background: value === 0 ? accent : "#444",
+                transform: "translateX(-50%)",
+              }}
+            />
+          ))}
+
+          <div style={{
+            position: "absolute",
+            left: `${Math.max(5, Math.min(95, 50 + cents))}%`,
+            top: 8,
+            width: 3,
+            height: 48,
+            background: tunerColor,
+            borderRadius: 3,
+            transform: "translateX(-50%)",
+            transition: "left .08s ease",
+            boxShadow: `0 0 12px ${tunerColor}`,
+          }} />
+
+          <div style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            bottom: 0,
+            display: "flex",
+            justifyContent: "space-between",
+            color: "#444",
+            fontSize: 10,
+            fontFamily: "monospace",
+          }}>
+            <span>♭</span>
+            <span>−50</span>
+            <span>−25</span>
+            <span style={{ color: accent }}>0</span>
+            <span>+25</span>
+            <span>+50</span>
+            <span>♯</span>
+          </div>
+        </div>
+
+        {/* Note */}
+        <div style={{
+          textAlign: "center",
+          padding: "8px 0 18px",
+        }}>
+          <div style={{
+            fontSize: 72,
+            lineHeight: 1,
+            fontWeight: 800,
+            color: tunerColor,
+            fontFamily: "monospace",
+          }}>
+            {note || "—"}
+          </div>
+
+          <div style={{
+            height: 22,
+            marginTop: 8,
+            fontSize: 13,
+            color: tunerColor,
+            fontWeight: 700,
+          }}>
+            {note && (
+              <>
+                {direction} {Math.abs(cents)} centů
+              </>
+            )}
+          </div>
+
+          <div style={{
+            fontSize: 11,
+            color: "#555",
+            fontFamily: "monospace",
+            marginTop: 5,
+          }}>
+            {frequency ? `${frequency.toFixed(1)} Hz` : "Zahraj strunu"}
+          </div>
+        </div>
+
+        {/* Guitar strings */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(6, 1fr)",
+          gap: 5,
+          marginBottom: 18,
+        }}>
+          {GUITAR_STRINGS.map((string, i) => {
+            const active =
+              note === string.name &&
+              frequency &&
+              Math.abs(frequency - string.frequency) <
+                string.frequency * 0.04
+
+            return (
+              <div
+                key={i}
+                style={{
+                  textAlign: "center",
+                  padding: "8px 3px",
+                  borderRadius: 8,
+                  background: active ? accent + "22" : "#111",
+                  border: `1px solid ${
+                    active ? accent + "66" : "#252525"
+                  }`,
+                }}
+              >
+                <div style={{
+                  fontSize: 15,
+                  fontWeight: 800,
+                  color: active ? accent : "#aaa",
+                }}>
+                  {string.name}
+                </div>
+                <div style={{
+                  fontSize: 9,
+                  color: "#555",
+                  marginTop: 2,
+                }}>
+                  {i + 1}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+
+        {/* Button */}
+        {!listening ? (
+          <button
+            onClick={startTuner}
+            style={{
+              width: "100%",
+              padding: 13,
+              border: "none",
+              borderRadius: 10,
+              background: accent,
+              color: "#000",
+              fontWeight: 800,
+              fontSize: 14,
+              cursor: "pointer",
+            }}
+          >
+            🎙️ Spustit ladičku
+          </button>
+        ) : (
+          <button
+            onClick={stopTuner}
+            style={{
+              width: "100%",
+              padding: 13,
+              border: "1px solid #333",
+              borderRadius: 10,
+              background: "#222",
+              color: "#aaa",
+              fontWeight: 700,
+              fontSize: 14,
+              cursor: "pointer",
+            }}
+          >
+            ■ Zastavit
+          </button>
+        )}
+
+        {error && (
+          <p style={{
+            color: "#f87171",
+            fontSize: 12,
+            textAlign: "center",
+            margin: "12px 0 0",
+          }}>
+            {error}
+          </p>
+        )}
+
+        <p style={{
+          color: "#444",
+          fontSize: 10,
+          textAlign: "center",
+          lineHeight: 1.5,
+          margin: "14px 0 0",
+        }}>
+          Pro správné měření hraj vždy jen jednu strunu.
+          Prohlížeč požádá o přístup k mikrofonu.
+        </p>
+      </div>
+    </div>
+  )
+}
+
+
 export default function App() {
+  const [showTuner, setShowTuner] = useState(false)
   const [activeTab, setActiveTab]         = useState("akordy")
   const [showFilters, setShowFilters]     = useState(false)
   const [dialogUnlocked, setDialogUnlocked] = useState(() => loadLS("dialogUnlocked", false))
@@ -591,11 +1043,29 @@ export default function App() {
 
   const activeFilterCount = [noCapo, showNewOnly, showFavOnly, showRecentOnly, tagFilter !== "vse", sortBy !== "default"].filter(Boolean).length
 
-  return (
-    <div style={{ minHeight: "100vh", background: "#111", color: "white", padding: "18px 16px 60px" }}>
-      {showSearchModal && <SearchModal onClose={() => setShowSearchModal(false)} accent={accent} />}
+return (
+  <div style={{
+    minHeight: "100vh",
+    background: "#111",
+    color: "white",
+    padding: "18px 16px 60px"
+  }}>
+    {showSearchModal && (
+      <SearchModal
+        onClose={() => setShowSearchModal(false)}
+        accent={accent}
+      />
+    )}
 
-      {/* ── HEADER ── */}
+    {showTuner && (
+      <Tuner
+        onClose={() => setShowTuner(false)}
+        accent={accent}
+      />
+    )}
+
+    {/* HEADER */}
+
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
           <span style={{ fontSize: 24 }}>🎸</span>
@@ -615,6 +1085,28 @@ export default function App() {
           </div>
 
           {/* Setlist button */}
+          <button
+  onClick={() => setShowTuner(true)}
+  title="Ladička"
+  style={{
+    background: showTuner ? accent : "#1e1e1e",
+    border: "1px solid " + (showTuner ? accent : "#2a2a2a"),
+    borderRadius: 8,
+    padding: "0 11px",
+    height: 34,
+    display: "flex",
+    alignItems: "center",
+    gap: 5,
+    cursor: "pointer",
+    fontSize: 12,
+    fontWeight: 700,
+    color: showTuner ? "#000" : "#777",
+    transition: "all 0.15s",
+  }}
+>
+  🎵 <span style={{ fontSize: 11 }}>Ladička</span>
+</button>
+
           <button onClick={() => setActiveTab(activeTab === "setlist" ? "akordy" : "setlist")} title="Setlist" style={{
             background: activeTab === "setlist" ? accent : "#1e1e1e",
             border: "1px solid " + (activeTab === "setlist" ? accent : "#2a2a2a"),
